@@ -14,7 +14,12 @@ function get_db() {
     static $pdo = null;
     if ($pdo === null) {
         $cfg = get_config()['db'];
-        $dsn = "mysql:host={$cfg['host']};dbname={$cfg['database']};charset={$cfg['charset']}";
+        // Support both MySQL and SQLite/custom DSN formats
+        if (isset($cfg['dsn'])) {
+            $dsn = $cfg['dsn'];
+        } else {
+            $dsn = "mysql:host={$cfg['host']};dbname={$cfg['database']};charset={$cfg['charset']}";
+        }
         try {
             $pdo = new PDO($dsn, $cfg['username'], $cfg['password'], [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,

@@ -1,11 +1,12 @@
 <?php
-// Testing config - minimal setup
+// Copy this file to config.php and update values as needed.
+
 return [
     'db' => [
         'host' => 'localhost',
-        'database' => 'crm_test',
-        'username' => 'root',
-        'password' => '',
+        'database' => 'crm_db',
+        'username' => 'crm_user',
+        'password' => 'your_db_password',
         'charset' => 'utf8mb4',
     ],
     'timezone' => 'Asia/Dhaka',

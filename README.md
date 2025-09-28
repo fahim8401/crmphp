@@ -47,7 +47,7 @@
 
 - **DB Connection:** Check credentials in `config.php`.
 - **Permission Denied:** Ensure `storage/` subfolders are writable.
-- **Session Path:** Ensure PHP session path is writable. Use `install/session_test.php` to verify session persistence. If sessions do not persist, CSRF protection and login will fail.
+- **Session Path:** Ensure PHP session path is writable. Use `install/session_test.php` to verify session persistence. If sessions do not persist, login will fail.
 - **exec() Disabled:** Some features (month close via web) require `exec()`.
 
 ## Manual Test Checklist
