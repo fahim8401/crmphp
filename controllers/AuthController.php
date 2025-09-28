@@ -17,7 +17,6 @@ function auth_login_page($error = null) {
         <?php if ($error): ?>
           <div class="mb-4 text-red-600"><?=e($error)?></div>
         <?php endif; ?>
-        <?=csrf_field()?>
         <div class="mb-4">
           <label class="block mb-1 font-semibold">Email</label>
           <input type="email" name="email" required class="w-full border px-3 py-2 rounded" autofocus>
@@ -34,7 +33,6 @@ function auth_login_page($error = null) {
 }
 
 function auth_login_handler() {
-    validate_csrf();
     $email = trim($_POST['email'] ?? '');
     $password = $_POST['password'] ?? '';
     $db = get_db();

@@ -39,7 +39,7 @@
 - Change the default admin password after first login (`admin@example.test` / `Admin@123`).
 - Remove seed users after deployment.
 - All passwords are hashed with `password_hash()`.
-- CSRF tokens on all forms.
+- CSRF protection has been removed at user request.
 - Output escaped with `htmlspecialchars()`.
 - Delete the `install/` folder after installation for security.
 

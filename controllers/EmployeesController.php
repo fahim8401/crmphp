@@ -24,7 +24,6 @@ function employees_create_page($error = null) {
 
 function employees_create_handler() {
     require_role(['admin', 'hr']);
-    validate_csrf();
     $db = get_db();
     $stmt = $db->prepare("INSERT INTO employees (name, phone, email, base_salary, joined_at, notes, created_at) VALUES (?, ?, ?, ?, ?, ?, NOW())");
     $stmt->execute([
@@ -51,7 +50,6 @@ function employees_edit_page($id, $error = null) {
 
 function employees_edit_handler($id) {
     require_role(['admin', 'hr']);
-    validate_csrf();
     $db = get_db();
     $stmt = $db->prepare("UPDATE employees SET name=?, phone=?, email=?, base_salary=?, joined_at=?, notes=? WHERE id=?");
     $stmt->execute([
@@ -70,7 +68,6 @@ function employees_edit_handler($id) {
 // Delete employee (admin only)
 function employees_delete_handler($id) {
     require_role(['admin']);
-    validate_csrf();
     $db = get_db();
     $stmt = $db->prepare("DELETE FROM employees WHERE id = ?");
     $stmt->execute([$id]);
