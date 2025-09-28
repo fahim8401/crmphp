@@ -27,6 +27,10 @@
 - Set permissions for `storage/exports` and `storage/logs` to writable.
 - Open `index.php` in your browser.
 
+**Pending Transaction Reminder:**
+- Each pending transaction now has a `settle_date` field (date to remind for collection).
+- Use this field to track when to follow up for payment.
+
 **Cron Example (Month Close):**
 - `php /home/username/hplinkcrm/close_month.php 2025-09`
 
@@ -52,6 +56,11 @@
 - Create transaction as HR with salary deduction; check salary tracker.
 - Mark pending transaction as received; check changed_by/changed_at.
 - Run close_month script; verify CSV and pending moved to next month.
+
+## Database Schema Notes
+
+- The `transactions` table includes a `settle_date` column for pending transactions.
+- Use this date to trigger reminders or reports for money collection.
 
 ## File Structure
 
