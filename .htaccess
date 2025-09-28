@@ -1,0 +1,21 @@
+# public/.htaccess
+# Enable URL rewriting for pretty URLs and security
+
+RewriteEngine On
+
+# Redirect all requests to index.php if the file/folder does not exist
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]
+
+# Deny access to config and app files from web
+<FilesMatch "(\.env|config\.php|config\.php\.example|composer\.json|composer\.lock|\.git)">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
+
+# Deny access to everything outside public/
+RedirectMatch 403 ^/app/
+RedirectMatch 403 ^/database/
+RedirectMatch 403 ^/scripts/
+RedirectMatch 403 ^/storage/
