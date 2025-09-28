@@ -4,7 +4,6 @@
 
 require_once __DIR__ . '/lib/database.php';
 require_once __DIR__ . '/lib/auth.php';
-require_once __DIR__ . '/lib/csrf.php';
 require_once __DIR__ . '/lib/helpers.php';
 require_once __DIR__ . '/lib/role_checks.php';
 

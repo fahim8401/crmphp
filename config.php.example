@@ -18,7 +18,6 @@ return [
 
     // Security
     'session_name' => 'crm_session',
-    'csrf_token_name' => 'csrf_token',
 
     // Storage paths
     'export_path' => __DIR__ . '/storage/exports/',

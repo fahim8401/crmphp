@@ -5,7 +5,6 @@
 require_once __DIR__ . '/../lib/database.php';
 require_once __DIR__ . '/../lib/helpers.php';
 require_once __DIR__ . '/../lib/role_checks.php';
-require_once __DIR__ . '/../lib/csrf.php';
 
 // List employees (admin, hr)
 function employees_index_page() {

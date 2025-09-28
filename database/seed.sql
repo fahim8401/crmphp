@@ -1,9 +1,9 @@
 -- CRM Seed Data-- Seed users for all roles
 INSERT INTO users (id, name, email, password_hash, role, employee_id, created_at)
 VALUES
-  (1, 'Admin User', 'admin@example.test', '$2y$10$wH6k1QwQwQwQwQwQwQwQwOQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw', 'admin', NULL, NOW()),
-  (2, 'HR User', 'hr@example.test', '$2y$10$wH6k1QwQwQwQwQwQwQwQwOQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw', 'hr', NULL, NOW()),
-  (3, 'Employee User', 'employee@example.test', '$2y$10$wH6k1QwQwQwQwQwQwQwQwOQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw', 'employee', 1, NOW());
+  (1, 'Admin User', 'admin@example.test', '$2y$10$8dMmK4gmqvrJVGcUnqlZE.LpKd8W1IpfG/zQ/yPDyGgIBsMyvhPHq', 'admin', NULL, NOW()),
+  (2, 'HR User', 'hr@example.test', '$2y$10$aZ77yRRmDM2JHCpIxSvAC.1AwO8AxSeD8xg5EFnGcfgmucANQacI6', 'hr', NULL, NOW()),
+  (3, 'Employee User', 'employee@example.test', '$2y$10$4q3iCaxTB65nw/ixCZI2ouYTHYazxZ5BzCkzRC0m07TTfDMQPRtsG', 'employee', 1, NOW());
 
 -- Passwords (all): Admin@123, Hr@123, Emp@123 (hashes must be generated with password_hash)
 
@@ -14,9 +14,9 @@ INSERT INTO employees (id, name, phone, email, base_salary, joined_at, notes, cr
 
 -- Insert users (passwords: Admin@123, Hr@123, Emp@123)
 INSERT INTO users (id, name, email, password_hash, role, employee_id, created_at) VALUES
-  (1, 'Admin User', 'admin@example.test', '$2y$10$wH9vQwQZQwQwQwQwQwQwQeQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw', 'admin', NULL, NOW()),
-  (2, 'HR User', 'hr@example.test', '$2y$10$wH9vQwQZQwQwQwQwQwQwQeQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw', 'hr', NULL, NOW()),
-  (3, 'Employee User', 'employee@example.test', '$2y$10$wH9vQwQZQwQwQwQwQwQwQeQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw', 'employee', 1, NOW());
+  (1, 'Admin User', 'admin@example.test', '$2y$10$8dMmK4gmqvrJVGcUnqlZE.LpKd8W1IpfG/zQ/yPDyGgIBsMyvhPHq', 'admin', NULL, NOW()),
+  (2, 'HR User', 'hr@example.test', '$2y$10$aZ77yRRmDM2JHCpIxSvAC.1AwO8AxSeD8xg5EFnGcfgmucANQacI6', 'hr', NULL, NOW()),
+  (3, 'Employee User', 'employee@example.test', '$2y$10$4q3iCaxTB65nw/ixCZI2ouYTHYazxZ5BzCkzRC0m07TTfDMQPRtsG', 'employee', 1, NOW());
 
 -- Insert clients
 INSERT INTO clients (id, name, phone, notes, created_at) VALUES

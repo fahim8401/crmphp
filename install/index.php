@@ -59,7 +59,6 @@ if ($step == 2) {
             . "    'currency_symbol' => '$currency',\n"
             . "    'default_month_format' => 'Y-m',\n"
             . "    'session_name' => 'crm_session',\n"
-            . "    'csrf_token_name' => 'csrf_token',\n"
             . "    'export_path' => __DIR__ . '/../storage/exports/',\n"
             . "    'log_path' => __DIR__ . '/../storage/logs/',\n"
             . "];\n";
