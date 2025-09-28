@@ -2,7 +2,6 @@
 // Copy this file to config.php and update values as needed.
 
 return [
-    // Database settings
     'db' => [
         'host' => 'localhost',
         'database' => 'crm_db',
@@ -10,16 +9,10 @@ return [
         'password' => 'your_db_password',
         'charset' => 'utf8mb4',
     ],
-
-    // App settings
     'timezone' => 'Asia/Dhaka',
-    'currency_symbol' => '৳', // BDT
-    'default_month_format' => 'Y-m', // e.g. 2025-09
-
-    // Security
+    'currency_symbol' => '৳',
+    'default_month_format' => 'Y-m',
     'session_name' => 'crm_session',
-
-    // Storage paths
     'export_path' => __DIR__ . '/storage/exports/',
     'log_path' => __DIR__ . '/storage/logs/',
 ];
