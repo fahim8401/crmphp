@@ -86,8 +86,13 @@ if ($step == 3 && isset($_POST['import_sql'])) {
         ]);
         $schema = file_get_contents(__DIR__ . '/../database/schema.sql');
         $seed = file_get_contents(__DIR__ . '/../database/seed.sql');
-        $pdo->exec($schema);
-        $pdo->exec($seed);
+        // Split and execute each statement for compatibility
+        foreach (explode(";", $schema) as $stmt) {
+            if (trim($stmt)) $pdo->exec($stmt);
+        }
+        foreach (explode(";", $seed) as $stmt) {
+            if (trim($stmt)) $pdo->exec($stmt);
+        }
         $success = "Database imported successfully.";
         $step = 4;
     } catch (Exception $e) {
