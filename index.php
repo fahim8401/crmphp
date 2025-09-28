@@ -43,11 +43,36 @@ switch ($page) {
     case 'dashboard':
         echo '<div class="p-8"><h1 class="text-2xl font-bold mb-4">HPLink CRM Dashboard</h1><p>Welcome, '.e(current_user()['name']).'!</p></div>';
         break;
-    // Add more cases for other controllers/entities, e.g.:
-    // case 'employees':
-    //     require_once __DIR__ . '/controllers/EmployeesController.php';
-    //     employees_index_page();
-    //     break;
+    case 'employees':
+        require_once __DIR__ . '/controllers/EmployeesController.php';
+        $action = $_GET['action'] ?? 'index';
+        switch ($action) {
+            case 'index':
+                employees_index_page();
+                break;
+            case 'create':
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    employees_create_handler();
+                } else {
+                    employees_create_page();
+                }
+                break;
+            case 'edit':
+                $id = $_GET['id'] ?? 0;
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    employees_edit_handler($id);
+                } else {
+                    employees_edit_page($id);
+                }
+                break;
+            case 'delete':
+                employees_delete_handler($_GET['id'] ?? 0);
+                break;
+            default:
+                employees_index_page();
+                break;
+        }
+        break;
     default:
         http_response_code(404);
         echo '<div class="p-8"><h1 class="text-2xl font-bold mb-4">404 Not Found</h1><p>Page not found.</p></div>';

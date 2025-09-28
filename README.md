@@ -1,5 +1,7 @@
 # HPLink CRM (Raw PHP, cPanel-ready)
 
+**Version:** 1.0.0
+
 ## Requirements
 
 - PHP 8.0+ or 8.1+
@@ -111,3 +113,13 @@ hplinkcrm/
 - Create transaction as HR with salary deduction; check salary tracker.
 - Mark pending transaction as received; check changed_by/changed_at.
 - Run close_month script; verify CSV and pending moved to next month.
+
+## Changelog
+
+### Version 1.0.0 (2024)
+- **Fixed**: Missing dependencies in lib/helpers.php - added required includes for auth.php and database.php
+- **Fixed**: Incomplete employee management routing - enabled full employee CRUD functionality
+- **Added**: Employee management views and interface
+- **Added**: Version tracking in composer.json
+- **Improved**: Code structure and dependency management
+- **Enhanced**: Employee listing with proper table layout and actions
