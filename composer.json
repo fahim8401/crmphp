@@ -1,6 +1,7 @@
 {
   "name": "fahim8401/hplink-crm",
   "description": "HPLink CRM - Raw PHP CRM for cPanel/shared hosting",
+  "version": "1.0.0",
   "type": "project",
   "license": "MIT",
   "authors": [
