@@ -72,6 +72,66 @@ switch ($page) {
                 break;
         }
         break;
+    case 'clients':
+        require_once __DIR__ . '/controllers/ClientsController.php';
+        $action = $_GET['action'] ?? 'index';
+        switch ($action) {
+            case 'index':
+                clients_index_page();
+                break;
+            case 'create':
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    clients_create_handler();
+                } else {
+                    clients_create_page();
+                }
+                break;
+            case 'edit':
+                $id = $_GET['id'] ?? 0;
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    clients_edit_handler($id);
+                } else {
+                    clients_edit_page($id);
+                }
+                break;
+            case 'delete':
+                clients_delete_handler($_GET['id'] ?? 0);
+                break;
+            default:
+                clients_index_page();
+                break;
+        }
+        break;
+    case 'transactions':
+        require_once __DIR__ . '/controllers/TransactionsController.php';
+        $action = $_GET['action'] ?? 'index';
+        switch ($action) {
+            case 'index':
+                transactions_index_page();
+                break;
+            case 'create':
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    transactions_create_handler();
+                } else {
+                    transactions_create_page();
+                }
+                break;
+            case 'edit':
+                $id = $_GET['id'] ?? 0;
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    transactions_edit_handler($id);
+                } else {
+                    transactions_edit_page($id);
+                }
+                break;
+            case 'delete':
+                transactions_delete_handler($_GET['id'] ?? 0);
+                break;
+            default:
+                transactions_index_page();
+                break;
+        }
+        break;
     default:
         http_response_code(404);
         echo '<div class="p-8"><h1 class="text-2xl font-bold mb-4">404 Not Found</h1><p>Page not found.</p></div>';
