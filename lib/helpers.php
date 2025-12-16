@@ -77,3 +77,30 @@ function format_currency($amount) {
     $cfg = get_config();
     return $cfg['currency_symbol'] . number_format((float)$amount, 2);
 }
+
+/**
+ * Get CSS classes for transaction type badge
+ * @param string $type Transaction type (received, pending, expense)
+ * @return string CSS classes
+ */
+function get_transaction_type_class($type) {
+    switch ($type) {
+        case 'received':
+            return 'bg-green-100 text-green-800';
+        case 'pending':
+            return 'bg-yellow-100 text-yellow-800';
+        case 'expense':
+            return 'bg-red-100 text-red-800';
+        default:
+            return 'bg-gray-100 text-gray-800';
+    }
+}
+
+/**
+ * Get CSS classes for transaction status badge
+ * @param string $status Transaction status (pending, completed)
+ * @return string CSS classes
+ */
+function get_transaction_status_class($status) {
+    return $status === 'completed' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800';
+}

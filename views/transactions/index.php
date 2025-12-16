@@ -48,7 +48,7 @@
                         <tr class="hover:bg-gray-50">
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"><?= e($trans['id']) ?></td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm">
-                                <span class="px-2 py-1 rounded text-xs font-medium <?= $trans['type'] === 'received' ? 'bg-green-100 text-green-800' : ($trans['type'] === 'pending' ? 'bg-yellow-100 text-yellow-800' : 'bg-red-100 text-red-800') ?>">
+                                <span class="px-2 py-1 rounded text-xs font-medium <?= get_transaction_type_class($trans['type']) ?>">
                                     <?= e(ucfirst($trans['type'])) ?>
                                 </span>
                             </td>
@@ -56,7 +56,7 @@
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"><?= e($trans['client_name'] ?? 'N/A') ?></td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"><?= format_currency($trans['amount']) ?></td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm">
-                                <span class="px-2 py-1 rounded text-xs font-medium <?= $trans['status'] === 'completed' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800' ?>">
+                                <span class="px-2 py-1 rounded text-xs font-medium <?= get_transaction_status_class($trans['status']) ?>">
                                     <?= e(ucfirst($trans['status'])) ?>
                                 </span>
                             </td>

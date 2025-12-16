@@ -77,7 +77,7 @@ foreach ($flashes as $type => $msgs) {
             $borderColor = 'border-yellow-400';
         }
         
-        echo '<div class="mx-4 my-2 px-4 py-2 rounded border '.$bgColor.' '.$textColor.' '.$borderColor.'">'.$msg.'</div>';
+        echo '<div class="flash-message mx-4 my-2 px-4 py-2 rounded border '.$bgColor.' '.$textColor.' '.$borderColor.'">'.$msg.'</div>';
     }
 }
 ?>

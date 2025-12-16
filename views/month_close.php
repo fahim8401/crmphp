@@ -28,7 +28,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['month_to_close'])) {
             // Check if exec is available
             if (function_exists('exec')) {
                 $php_bin = PHP_BINARY;
-                $cmd = escapeshellcmd("$php_bin $script_path $month_to_close");
+                $script_arg = escapeshellarg($month_to_close);
+                $cmd = "$php_bin " . escapeshellarg($script_path) . " $script_arg";
                 $output = [];
                 $return_var = 0;
                 exec($cmd, $output, $return_var);

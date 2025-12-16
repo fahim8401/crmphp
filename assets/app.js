@@ -3,9 +3,9 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     // Auto-hide flash messages after 5 seconds
-    const flashMessages = document.querySelectorAll('[class*="bg-red-100"], [class*="bg-green-100"], [class*="bg-blue-100"]');
+    const flashMessages = document.querySelectorAll('.flash-message, [class*="bg-red-100"][class*="mx-4"], [class*="bg-green-100"][class*="mx-4"], [class*="bg-blue-100"][class*="mx-4"]');
     flashMessages.forEach(function(msg) {
-        if (msg.classList.contains('mx-4') && msg.classList.contains('my-2')) {
+        if (msg.classList.contains('mx-4') || msg.classList.contains('flash-message')) {
             setTimeout(function() {
                 msg.style.transition = 'opacity 0.5s';
                 msg.style.opacity = '0';

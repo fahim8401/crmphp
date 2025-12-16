@@ -34,6 +34,10 @@ $stmt = $db->prepare($count_sql);
 $stmt->execute($params);
 $total = $stmt->fetchColumn();
 
+// Validate pagination parameters
+$per_page = 50;
+$offset = max(0, ($page - 1) * $per_page);
+
 // Get logs
 $sql = "
     SELECT al.*, u.name AS user_name
@@ -41,10 +45,10 @@ $sql = "
     LEFT JOIN users u ON al.user_id = u.id
     $where_sql
     ORDER BY al.created_at DESC
-    LIMIT $per_page OFFSET $offset
+    LIMIT ? OFFSET ?
 ";
 $stmt = $db->prepare($sql);
-$stmt->execute($params);
+$stmt->execute(array_merge($params, [$per_page, $offset]));
 $logs = $stmt->fetchAll();
 
 // Get users for filter
