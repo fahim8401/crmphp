@@ -4,6 +4,10 @@
 
 require_once __DIR__ . '/database.php';
 
+/**
+ * Start PHP session if not already started
+ * @return void
+ */
 function start_session() {
     $cfg = get_config();
     if (session_status() === PHP_SESSION_NONE) {
@@ -12,6 +16,11 @@ function start_session() {
     }
 }
 
+/**
+ * Log in a user and set session variables
+ * @param array $user User data array
+ * @return void
+ */
 function login($user) {
     start_session();
     session_regenerate_id(true);
@@ -20,6 +29,10 @@ function login($user) {
     $_SESSION['employee_id'] = $user['employee_id'];
 }
 
+/**
+ * Log out the current user and destroy session
+ * @return void
+ */
 function logout() {
     start_session();
     $_SESSION = [];
@@ -33,11 +46,19 @@ function logout() {
     session_destroy();
 }
 
+/**
+ * Check if a user is logged in
+ * @return bool True if logged in, false otherwise
+ */
 function is_logged_in() {
     start_session();
     return isset($_SESSION['user_id']);
 }
 
+/**
+ * Get the current logged-in user's data
+ * @return array|null User data or null if not logged in
+ */
 function current_user() {
     start_session();
     if (!isset($_SESSION['user_id'])) return null;
@@ -51,10 +72,21 @@ function current_user() {
     return $user;
 }
 
+/**
+ * Hash a password securely
+ * @param string $password Plain text password
+ * @return string Hashed password
+ */
 function password_hash_safe($password) {
     return password_hash($password, PASSWORD_DEFAULT);
 }
 
+/**
+ * Verify a password against a hash
+ * @param string $password Plain text password
+ * @param string $hash Hashed password
+ * @return bool True if password matches, false otherwise
+ */
 function password_verify_safe($password, $hash) {
     return password_verify($password, $hash);
 }

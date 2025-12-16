@@ -28,10 +28,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Mobile menu toggle
     const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const sidebar = document.querySelector('aside');
+    const sidebar = document.getElementById('sidebar');
     if (mobileMenuButton && sidebar) {
         mobileMenuButton.addEventListener('click', function() {
-            sidebar.classList.toggle('hidden');
+            sidebar.classList.toggle('-translate-x-full');
+        });
+        
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function(e) {
+            if (window.innerWidth < 768) {
+                if (!sidebar.contains(e.target) && !mobileMenuButton.contains(e.target)) {
+                    sidebar.classList.add('-translate-x-full');
+                }
+            }
         });
     }
 

@@ -13,6 +13,13 @@
 <body class="bg-gray-100 min-h-screen">
   <header class="bg-white shadow px-6 py-3 flex items-center justify-between">
     <div class="flex items-center space-x-3">
+      <?php if (is_logged_in()): ?>
+        <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-gray-800 focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      <?php endif; ?>
       <img src="/assets/logo.png" alt="HPLink CRM Logo" class="h-10 w-10">
       <span class="font-bold text-2xl text-blue-700 tracking-wide">HPLink CRM</span>
     </div>
