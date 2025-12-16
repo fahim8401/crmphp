@@ -40,7 +40,33 @@ include __DIR__ . '/views/layout/header.php';
 
 switch ($page) {
     case 'dashboard':
-        echo '<div class="p-8"><h1 class="text-2xl font-bold mb-4">HPLink CRM Dashboard</h1><p>Welcome, '.e(current_user()['name']).'!</p></div>';
+        // Fetch dashboard statistics
+        $db = get_db();
+        $stats = [];
+        
+        // Total employees
+        $stmt = $db->query("SELECT COUNT(*) FROM employees");
+        $stats['total_employees'] = $stmt->fetchColumn();
+        
+        // Total clients
+        $stmt = $db->query("SELECT COUNT(*) FROM clients");
+        $stats['total_clients'] = $stmt->fetchColumn();
+        
+        // Current month transactions
+        $current_month = date('Y-m');
+        $stmt = $db->prepare("SELECT COUNT(*), SUM(amount) FROM transactions WHERE month_year = ? AND type = 'received' AND status = 'completed'");
+        $stmt->execute([$current_month]);
+        $row = $stmt->fetch(PDO::FETCH_NUM);
+        $stats['monthly_received_count'] = $row[0];
+        $stats['monthly_received_amount'] = $row[1] ?? 0;
+        
+        $stmt = $db->prepare("SELECT COUNT(*), SUM(amount) FROM transactions WHERE month_year = ? AND type = 'pending'");
+        $stmt->execute([$current_month]);
+        $row = $stmt->fetch(PDO::FETCH_NUM);
+        $stats['monthly_pending_count'] = $row[0];
+        $stats['monthly_pending_amount'] = $row[1] ?? 0;
+        
+        include __DIR__ . '/views/dashboard.php';
         break;
     case 'employees':
         require_once __DIR__ . '/controllers/EmployeesController.php';
@@ -129,6 +155,42 @@ switch ($page) {
                 break;
             default:
                 transactions_index_page();
+                break;
+        }
+        break;
+    case 'profile':
+        include __DIR__ . '/views/profile.php';
+        break;
+    case 'reports':
+        include __DIR__ . '/views/reports.php';
+        break;
+    case 'users':
+        require_once __DIR__ . '/controllers/UsersController.php';
+        $action = $_GET['action'] ?? 'index';
+        switch ($action) {
+            case 'index':
+                users_index_page();
+                break;
+            case 'create':
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    users_create_handler();
+                } else {
+                    users_create_page();
+                }
+                break;
+            case 'edit':
+                $id = $_GET['id'] ?? 0;
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    users_edit_handler($id);
+                } else {
+                    users_edit_page($id);
+                }
+                break;
+            case 'delete':
+                users_delete_handler($_GET['id'] ?? 0);
+                break;
+            default:
+                users_index_page();
                 break;
         }
         break;
