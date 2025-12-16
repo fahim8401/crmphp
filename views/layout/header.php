@@ -59,8 +59,25 @@
 $flashes = get_flash();
 foreach ($flashes as $type => $msgs) {
     foreach ($msgs as $msg) {
-        $color = $type === 'error' ? 'red' : ($type === 'success' ? 'green' : 'blue');
-        echo '<div class="mx-4 my-2 px-4 py-2 rounded bg-'.$color.'-100 text-'.$color.'-800">'.$msg.'</div>';
+        $bgColor = 'bg-blue-100';
+        $textColor = 'text-blue-800';
+        $borderColor = 'border-blue-400';
+        
+        if ($type === 'error') {
+            $bgColor = 'bg-red-100';
+            $textColor = 'text-red-800';
+            $borderColor = 'border-red-400';
+        } elseif ($type === 'success') {
+            $bgColor = 'bg-green-100';
+            $textColor = 'text-green-800';
+            $borderColor = 'border-green-400';
+        } elseif ($type === 'warning') {
+            $bgColor = 'bg-yellow-100';
+            $textColor = 'text-yellow-800';
+            $borderColor = 'border-yellow-400';
+        }
+        
+        echo '<div class="mx-4 my-2 px-4 py-2 rounded border '.$bgColor.' '.$textColor.' '.$borderColor.'">'.$msg.'</div>';
     }
 }
 ?>

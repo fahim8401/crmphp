@@ -194,6 +194,12 @@ switch ($page) {
                 break;
         }
         break;
+    case 'activity_logs':
+        include __DIR__ . '/views/activity_logs.php';
+        break;
+    case 'month_close':
+        include __DIR__ . '/views/month_close.php';
+        break;
     default:
         http_response_code(404);
         echo '<div class="p-8"><h1 class="text-2xl font-bold mb-4">404 Not Found</h1><p>Page not found.</p></div>';
