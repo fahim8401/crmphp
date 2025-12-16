@@ -116,6 +116,25 @@ hplinkcrm/
 
 ## Changelog
 
+### Version 1.1.0 (2024)
+- **Added**: Complete Clients management system (CRUD)
+- **Added**: Complete Transactions management system (CRUD) with filtering
+- **Added**: Reports page with financial summaries
+- **Added**: Users management (admin only)
+- **Added**: User profile page
+- **Added**: Activity logs viewer with filters
+- **Added**: Month Close web interface
+- **Added**: Improved dashboard with statistics widgets
+- **Added**: Mobile responsive navigation menu
+- **Added**: Developer documentation (DEVELOPERS.md)
+- **Added**: PHPDoc comments for better code documentation
+- **Added**: Input validation and error handling
+- **Added**: Flash messages for user feedback
+- **Improved**: Security with proper input sanitization
+- **Improved**: UI/UX with Tailwind CSS enhancements
+- **Fixed**: Flash message display with proper styling
+- **Fixed**: Mobile menu functionality
+
 ### Version 1.0.0 (2024)
 - **Fixed**: Missing dependencies in lib/helpers.php - added required includes for auth.php and database.php
 - **Fixed**: Incomplete employee management routing - enabled full employee CRUD functionality
