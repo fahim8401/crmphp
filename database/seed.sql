@@ -1,18 +1,12 @@
--- CRM Seed Data-- Seed users for all roles
-INSERT INTO users (id, name, email, password_hash, role, employee_id, created_at)
-VALUES
-  (1, 'Admin User', 'admin@example.test', '$2y$10$8dMmK4gmqvrJVGcUnqlZE.LpKd8W1IpfG/zQ/yPDyGgIBsMyvhPHq', 'admin', NULL, NOW()),
-  (2, 'HR User', 'hr@example.test', '$2y$10$aZ77yRRmDM2JHCpIxSvAC.1AwO8AxSeD8xg5EFnGcfgmucANQacI6', 'hr', NULL, NOW()),
-  (3, 'Employee User', 'employee@example.test', '$2y$10$4q3iCaxTB65nw/ixCZI2ouYTHYazxZ5BzCkzRC0m07TTfDMQPRtsG', 'employee', 1, NOW());
-
+-- CRM Seed Data
 -- Passwords (all): Admin@123, Hr@123, Emp@123 (hashes must be generated with password_hash)
 
--- Insert employees
+-- Insert employees first
 INSERT INTO employees (id, name, phone, email, base_salary, joined_at, notes, created_at) VALUES
   (1, 'Alice Rahman', '01711111111', 'alice@company.com', 50000.00, '2023-01-10', 'Senior Sales', NOW()),
   (2, 'Bob Karim', '01722222222', 'bob@company.com', 40000.00, '2023-03-15', 'Support', NOW());
 
--- Insert users (passwords: Admin@123, Hr@123, Emp@123)
+-- Insert users
 INSERT INTO users (id, name, email, password_hash, role, employee_id, created_at) VALUES
   (1, 'Admin User', 'admin@example.test', '$2y$10$8dMmK4gmqvrJVGcUnqlZE.LpKd8W1IpfG/zQ/yPDyGgIBsMyvhPHq', 'admin', NULL, NOW()),
   (2, 'HR User', 'hr@example.test', '$2y$10$aZ77yRRmDM2JHCpIxSvAC.1AwO8AxSeD8xg5EFnGcfgmucANQacI6', 'hr', NULL, NOW()),

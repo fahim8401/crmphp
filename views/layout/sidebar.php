@@ -3,7 +3,7 @@
 $user = current_user();
 $role = $user['role'] ?? '';
 ?>
-<aside class="w-64 bg-white shadow h-screen flex flex-col hidden md:block">
+<aside class="w-64 bg-white shadow h-screen flex flex-col fixed md:static z-30 transform -translate-x-full md:translate-x-0 transition-transform duration-300" id="sidebar">
   <div class="p-6 border-b flex items-center space-x-3">
     <img src="/assets/logo.png" alt="Logo" class="h-8 w-8">
     <span class="font-bold text-lg text-blue-700 tracking-wide">HPLink CRM</span>
